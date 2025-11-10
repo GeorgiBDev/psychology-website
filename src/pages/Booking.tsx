@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Clock, Info, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Questionnaire from "@/components/Questionnaire";
 
 const Booking = () => {
   const [date, setDate] = useState<Date | undefined>();
@@ -28,6 +29,7 @@ const Booking = () => {
   const [showTimeSlotModal, setShowTimeSlotModal] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [showSuccessStep, setShowSuccessStep] = useState(false);
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const { toast } = useToast();
 
   const timeSlots = [
@@ -334,9 +336,10 @@ const Booking = () => {
                 </p>
                 <div className="flex gap-3">
                   <Button
-                    onClick={() =>
-                      window.open("https://forms.gle/your-form-link", "_blank")
-                    }
+                    onClick={() => {
+                      setShowQuestionnaire(true);
+                      handleCloseBooking();
+                    }}
                     className="flex-1"
                   >
                     Da, completez chestionarul
@@ -354,6 +357,11 @@ const Booking = () => {
           )}
         </DialogContent>
       </Dialog>
+
+      <Questionnaire
+        isOpen={showQuestionnaire}
+        onClose={() => setShowQuestionnaire(false)}
+      />
     </div>
   );
 };
