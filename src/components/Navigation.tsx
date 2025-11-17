@@ -9,17 +9,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [language, setLanguage] = useState<"ro" | "en">("ro");
   const location = useLocation();
 
+  const { language, setLanguage, t } = useLanguage();
+
   const navItems = [
-    { path: "/", label: language === "ro" ? "Acasă" : "Home" },
-    { path: "/about", label: language === "ro" ? "Despre" : "About" },
-    { path: "/services", label: language === "ro" ? "Servicii" : "Services" },
-    { path: "/booking", label: language === "ro" ? "Programare" : "Booking" },
+    { path: "/", label: t.nav.home },
+    { path: "/about", label: t.nav.about },
+    { path: "/services", label: t.nav.services },
+    { path: "/booking", label: t.nav.booking },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -73,7 +75,7 @@ const Navigation = () => {
             <Button asChild className="rounded-full">
               <a href="tel:0744000277">
                 <Phone className="mr-2 h-4 w-4" />
-                Contact
+                {t.nav.contact}
               </a>
             </Button>
           </div>
@@ -107,7 +109,7 @@ const Navigation = () => {
 
                 <div className="mt-6 border-t pt-4">
                   <p className="mb-2 text-sm font-medium text-muted-foreground">
-                    {language === "ro" ? "Limbă" : "Language"}
+                    {t.nav.language}
                   </p>
                   <div className="flex gap-2">
                     <Button
@@ -132,7 +134,7 @@ const Navigation = () => {
                 <Button asChild className="mt-4 rounded-full">
                   <a href="tel:0744000277">
                     <Phone className="mr-2 h-4 w-4" />
-                    Contact
+                    {t.nav.contact}
                   </a>
                 </Button>
               </div>

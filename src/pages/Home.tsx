@@ -8,26 +8,27 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Heart, Lightbulb, Sun, ArrowRight } from "lucide-react";
+import heroImage from "@/assets/hero-therapy-office.jpg";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Home = () => {
+  const { t } = useLanguage();
+
   const features = [
     {
       icon: Heart,
-      title: "Îngrijire Empatică",
-      description:
-        "Un spațiu cald și necritic unde poți explora gândurile și sentimentele tale în siguranță.",
+      title: t.home.features.empathy.title,
+      description: t.home.features.empathy.desc,
     },
     {
       icon: Lightbulb,
-      title: "Metode Bazate pe Dovezi",
-      description:
-        "Utilizăm abordări terapeutice dovedite, adaptate nevoilor și obiectivelor tale unice.",
+      title: t.home.features.evidence.title,
+      description: t.home.features.evidence.desc,
     },
     {
       icon: Sun,
-      title: "Bunăstare Holistică",
-      description:
-        "Abordarea minții, corpului și spiritului pentru sănătate mentală și bunăstare cuprinzătoare.",
+      title: t.home.features.holistic.title,
+      description: t.home.features.holistic.desc,
     },
   ];
 
@@ -38,17 +39,15 @@ const Home = () => {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div className="animate-fade-in space-y-8">
               <h1 className="font-heading text-4xl font-bold leading-tight text-foreground lg:text-6xl">
-                Îndrumare Blândă pentru Călătoria Ta de Bunăstare Mentală
+                {t.home.hero.title}
               </h1>
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Servicii profesionale de psihologie într-un mediu cald și
-                natural, concepute pentru a te ajuta să te redescoperi și să îți
-                orchestrezi viața ca pe o capodoperă.
+                {t.home.hero.subtitle}
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
                 <Button asChild size="lg" className="rounded-full">
                   <Link to="/booking">
-                    Programează Consultație
+                    {t.home.hero.bookBtn}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -58,13 +57,14 @@ const Home = () => {
                   size="lg"
                   className="rounded-full"
                 >
-                  <Link to="/about">Află Mai Multe</Link>
+                  <Link to="/about">{t.home.hero.learnBtn}</Link>
                 </Button>
               </div>
             </div>
             <div className="animate-fade-in relative">
               <div className="overflow-hidden rounded-3xl shadow-large">
                 <img
+                  src={heroImage}
                   alt="Cabinet terapeutic profesional"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
@@ -78,11 +78,10 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
             <h2 className="mb-4 font-heading text-3xl font-semibold text-foreground lg:text-4xl">
-              O Abordare Naturală a Sănătății Mentale
+              {t.home.features.title}
             </h2>
             <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
-              Experimentează terapia într-un mediu liniștit care promovează
-              vindecarea și creșterea personală
+              {t.home.features.subtitle}
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
@@ -113,11 +112,10 @@ const Home = () => {
       <section className="bg-primary py-20 text-primary-foreground">
         <div className="container mx-auto px-6 text-center">
           <h2 className="mb-6 font-heading text-3xl font-semibold lg:text-4xl">
-            Pregătit să Începi Călătoria Ta?
+            {t.home.cta.title}
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg opacity-90">
-            Primul pas către bunăstarea mentală începe cu o conversație. Să
-            discutăm despre cum te pot ajuta.
+            {t.home.cta.subtitle}
           </p>
           <Button
             asChild
@@ -125,7 +123,7 @@ const Home = () => {
             variant="secondary"
             className="rounded-full"
           >
-            <Link to="/booking">Programează-te Acum</Link>
+            <Link to="/booking">{t.home.cta.btn}</Link>
           </Button>
         </div>
       </section>

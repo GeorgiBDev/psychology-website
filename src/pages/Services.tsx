@@ -9,38 +9,38 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { User, Users, Brain, Sparkles, Heart, TrendingUp } from "lucide-react";
 
+import { useLanguage } from "@/hooks/useLanguage";
+
 const Services = () => {
+  const { t } = useLanguage();
+
   const mainServices = [
     {
       icon: User,
-      title: "Terapie Individuală",
-      description:
-        "Sesiuni unu-la-unu concentrate pe obiectivele, provocările și creșterea ta personală. Folosim abordări bazate pe dovezi, inclusiv TCC, mindfulness și terapie somatică.",
-      duration: "Sesiuni de 50 de minute",
+      title: t.services.individual.title,
+      description: t.services.individual.desc,
+      duration: t.services.individual.duration,
       price: "150 RON",
     },
     {
       icon: Users,
-      title: "Terapie de Cuplu",
-      description:
-        "Îmbunătățește-ți relația prin comunicare îmbunătățită, rezolvarea conflictelor și conexiune emotională mai profundă, folosind metodele Gottman și EFT.",
-      duration: "Sesiuni de 75 de minute",
+      title: t.services.couples.title,
+      description: t.services.couples.desc,
+      duration: t.services.couples.duration,
       price: "200 RON",
     },
     {
       icon: Brain,
-      title: "Management Anxietate & Stres",
-      description:
-        "Tratament specializat pentru tulburările de anxietate, atacurile de panică și stresul cronic, folosind intervenții bazate pe mindfulness și tehnici cognitive-comportamentale.",
-      duration: "Sesiuni individuale sau de grup disponibile",
+      title: t.services.anxiety.title,
+      description: t.services.anxiety.desc,
+      duration: t.services.anxiety.duration,
       price: "De la 150 RON",
     },
     {
       icon: Sparkles,
-      title: "Recuperare după Traume",
-      description:
-        "Terapie blândă și informată despre traume, folosind EMDR și abordări somatice pentru a te ajuta să te vindeci de experiențele din trecut și să îți recapeți siguranța și puterea.",
-      duration: "Sesiuni intensive specializate disponibile",
+      title: t.services.trauma.title,
+      description: t.services.trauma.desc,
+      duration: t.services.trauma.duration,
       price: "De la 150 RON",
     },
   ];
@@ -48,38 +48,33 @@ const Services = () => {
   const specializations = [
     {
       icon: Heart,
-      title: "Depresie & Tulburări de Dispoziție",
-      description:
-        "Tratament cuprinzător pentru depresie, tulburare bipolară și tulburare afectivă sezonieră",
+      title: t.services.specializations.depression.title,
+      description: t.services.specializations.depression.desc,
     },
     {
       icon: TrendingUp,
-      title: "Tranziții de Viață",
-      description:
-        "Sprijin prin schimbări majore de viață, tranziții de carieră și schimbări în relații",
+      title: t.services.specializations.transitions.title,
+      description: t.services.specializations.transitions.desc,
     },
     {
       icon: Brain,
-      title: "Mindfulness & Meditație",
-      description:
-        "Predarea practicilor de mindfulness pentru reducerea stresului și reglarea emoțională",
+      title: t.services.specializations.mindfulness.title,
+      description: t.services.specializations.mindfulness.desc,
     },
     {
       icon: Heart,
-      title: "Sănătatea Mentală a Femeilor",
-      description:
-        "Îngrijire specializată pentru sănătatea mentală perinatală, schimbări hormonale și probleme ale femeilor",
+      title: t.services.specializations.women.title,
+      description: t.services.specializations.women.desc,
     },
     {
       icon: Sparkles,
-      title: "Doliu & Pierdere",
-      description: "Sprijin compassionate prin doliu și pierderi semnificative",
+      title: t.services.specializations.grief.title,
+      description: t.services.specializations.grief.desc,
     },
     {
       icon: User,
-      title: "Stimă de Sine & Identitate",
-      description:
-        "Construirea încrederii, valorii de sine și exprimării de sine autentice",
+      title: t.services.specializations.selfEsteem.title,
+      description: t.services.specializations.selfEsteem.desc,
     },
   ];
 
@@ -88,11 +83,10 @@ const Services = () => {
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
           <h1 className="mb-6 font-heading text-4xl font-bold text-foreground lg:text-5xl">
-            Servicii Profesionale
+            {t.services.title}
           </h1>
           <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
-            Servicii cuprinzătoare de sănătate mentală adaptate pentru a
-            sprijini călătoria ta unică către bunăstare și creștere personală
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -127,7 +121,7 @@ const Services = () => {
 
         <div className="rounded-3xl bg-accent/30 p-12 backdrop-blur-sm">
           <h2 className="mb-12 text-center font-heading text-3xl font-semibold text-foreground">
-            Arii de Specializare
+            {t.services.specializations.title}
           </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {specializations.map((item, index) => (
@@ -148,7 +142,7 @@ const Services = () => {
 
         <div className="mt-20 text-center">
           <Button asChild size="lg" className="rounded-full">
-            <Link to="/booking">Programează o Consultație</Link>
+            <Link to="/booking">{t.services.cta}</Link>
           </Button>
         </div>
       </div>

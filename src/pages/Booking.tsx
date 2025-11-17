@@ -22,6 +22,7 @@ import {
 import { Clock, Info, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Questionnaire from "@/components/Questionnaire";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Booking = () => {
   const [date, setDate] = useState<Date | undefined>();
@@ -31,6 +32,7 @@ const Booking = () => {
   const [showSuccessStep, setShowSuccessStep] = useState(false);
   const [showQuestionnaire, setShowQuestionnaire] = useState(false);
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const timeSlots = [
     "09:00",
@@ -54,9 +56,8 @@ const Booking = () => {
     const dayOfWeek = selectedDate.getDay();
     if (dayOfWeek === 0 || dayOfWeek === 6) {
       toast({
-        title: "Weekend indisponibil",
-        description:
-          "Programările în weekend sunt disponibile doar la cerere. Te rugăm să ne contactezi.",
+        title: t.booking.weekendError.title,
+        description: t.booking.weekendError.desc,
         variant: "destructive",
       });
       return;
@@ -88,11 +89,10 @@ const Booking = () => {
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
           <h1 className="mb-6 font-heading text-4xl font-bold text-foreground lg:text-5xl">
-            Programează Sesiunea Ta
+            {t.booking.title}
           </h1>
           <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
-            Alege un moment convenabil pentru sesiunea ta de terapie. Aștept cu
-            nerăbdare să te sprijin în călătoria ta de bunăstare.
+            {t.booking.subtitle}
           </p>
         </div>
 
@@ -119,7 +119,7 @@ const Booking = () => {
             <Card className="gradient-card border-0 shadow-medium">
               <CardHeader>
                 <CardTitle className="font-heading">
-                  Tipuri de Sesiuni
+                  {t.booking.sessionTypes.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -127,9 +127,11 @@ const Booking = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-semibold text-foreground">
-                        Terapie Individuală
+                        {t.booking.sessionTypes.individual}
                       </h4>
-                      <p className="text-sm text-muted-foreground">50 minute</p>
+                      <p className="text-sm text-muted-foreground">
+                        50 {t.booking.sessionTypes.minutes}
+                      </p>
                     </div>
                     <div className="text-lg font-semibold text-primary">
                       150 RON
@@ -140,9 +142,11 @@ const Booking = () => {
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-semibold text-foreground">
-                        Terapie de Cuplu
+                        {t.booking.sessionTypes.couples}
                       </h4>
-                      <p className="text-sm text-muted-foreground">75 minute</p>
+                      <p className="text-sm text-muted-foreground">
+                        75 {t.booking.sessionTypes.minutes}
+                      </p>
                     </div>
                     <div className="text-lg font-semibold text-primary">
                       200 RON
@@ -156,18 +160,19 @@ const Booking = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 font-heading text-lg">
                   <Info className="h-5 w-5 text-primary" />
-                  Program
+                  {t.booking.schedule.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
                 <p>
-                  <strong>Luni - Joi:</strong> 9:00 - 18:00
+                  <strong>{t.booking.schedule.weekdays}</strong> 9:00 - 18:00
                 </p>
                 <p>
-                  <strong>Vineri:</strong> 9:00 - 15:00
+                  <strong>{t.booking.schedule.friday}</strong> 9:00 - 15:00
                 </p>
                 <p>
-                  <strong>Weekend:</strong> La cerere
+                  <strong>{t.booking.schedule.weekend}</strong>{" "}
+                  {t.booking.schedule.onRequest}
                 </p>
               </CardContent>
             </Card>
@@ -175,14 +180,14 @@ const Booking = () => {
             <Card className="border-0 bg-accent/30 shadow-soft">
               <CardHeader>
                 <CardTitle className="font-heading text-lg">
-                  Informații Importante
+                  {t.booking.info.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Confirmarea se face cu 24h înainte</li>
-                  <li>• Anularea gratuită până cu 48h înainte</li>
-                  <li>• Prima sesiune include evaluarea inițială</li>
+                  <li>• {t.booking.info.confirmation}</li>
+                  <li>• {t.booking.info.cancellation}</li>
+                  <li>• {t.booking.info.firstSession}</li>
                 </ul>
               </CardContent>
             </Card>
@@ -193,9 +198,11 @@ const Booking = () => {
       <Dialog open={showTimeSlotModal} onOpenChange={setShowTimeSlotModal}>
         <DialogContent className="sm:max-w-[450px]">
           <DialogHeader>
-            <DialogTitle className="font-heading">Selectează Ora</DialogTitle>
+            <DialogTitle className="font-heading">
+              {t.booking.timeModal.title}
+            </DialogTitle>
             <DialogDescription>
-              Alege un interval disponibil pentru{" "}
+              {t.booking.timeModal.description}{" "}
               {date?.toLocaleDateString("ro-RO", {
                 weekday: "long",
                 year: "numeric",
@@ -224,12 +231,14 @@ const Booking = () => {
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
             <DialogTitle className="font-heading">
-              {showSuccessStep ? "Programare Confirmată!" : "Rezervă Sesiunea"}
+              {showSuccessStep
+                ? t.booking.bookingModal.titleSuccess
+                : t.booking.bookingModal.titleBook}
             </DialogTitle>
             <DialogDescription>
               {showSuccessStep
-                ? "Sesiunea ta a fost programată cu succes"
-                : "Completează formularul pentru a confirma programarea"}
+                ? t.booking.bookingModal.descSuccess
+                : t.booking.bookingModal.descBook}
             </DialogDescription>
           </DialogHeader>
 
@@ -237,50 +246,57 @@ const Booking = () => {
             <form onSubmit={handleBooking} className="space-y-4">
               <div className="rounded-lg bg-accent/30 p-4">
                 <p className="text-sm">
-                  <strong>Data:</strong> {date?.toLocaleDateString("ro-RO")}
+                  <strong>{t.booking.bookingModal.date}</strong>{" "}
+                  {date?.toLocaleDateString("ro-RO")}
                 </p>
                 <p className="text-sm">
-                  <strong>Ora:</strong> {selectedTime}
+                  <strong>{t.booking.bookingModal.time}</strong> {selectedTime}
                 </p>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="name">Nume Complet *</Label>
+                <Label htmlFor="name">
+                  {t.booking.bookingModal.fullName} *
+                </Label>
                 <Input id="name" required />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email">Email *</Label>
+                <Label htmlFor="email">{t.booking.bookingModal.email} *</Label>
                 <Input id="email" type="email" required />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone">Telefon *</Label>
+                <Label htmlFor="phone">{t.booking.bookingModal.phone} *</Label>
                 <Input id="phone" type="tel" required />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="sessionType">Tipul Sesiunii *</Label>
+                <Label htmlFor="sessionType">
+                  {t.booking.bookingModal.sessionType} *
+                </Label>
                 <Select required>
                   <SelectTrigger>
-                    <SelectValue placeholder="Selectează tipul sesiunii" />
+                    <SelectValue
+                      placeholder={t.booking.bookingModal.selectType}
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="individual">
-                      Terapie individuală (150 RON)
+                      {t.booking.sessionTypes.individual} (150 RON)
                     </SelectItem>
                     <SelectItem value="couples">
-                      Terapie de cuplu (200 RON)
+                      {t.booking.sessionTypes.couples} (200 RON)
                     </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="notes">Observații (opțional)</Label>
+                <Label htmlFor="notes">{t.booking.bookingModal.notes}</Label>
                 <Textarea
                   id="notes"
-                  placeholder="Orice informații suplimentare pe care dorești să le împărtășești..."
+                  placeholder={t.booking.bookingModal.notesPlaceholder}
                   rows={3}
                 />
               </div>
@@ -292,10 +308,10 @@ const Booking = () => {
                   onClick={handleCloseBooking}
                   className="flex-1"
                 >
-                  Anulează
+                  {t.booking.bookingModal.cancel}
                 </Button>
                 <Button type="submit" className="flex-1">
-                  Rezervă Sesiunea
+                  {t.booking.bookingModal.reserve}
                 </Button>
               </div>
             </form>
@@ -306,33 +322,30 @@ const Booking = () => {
                   <CheckCircle2 className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="mb-2 text-xl font-heading font-semibold">
-                  Programare Confirmată!
+                  {t.booking.bookingModal.titleSuccess}
                 </h3>
                 <p className="text-center text-muted-foreground mb-4">
-                  Vei primi un email de confirmare în scurt timp cu toate
-                  detaliile sesiunii.
+                  {t.booking.bookingModal.confirmationEmail}
                 </p>
               </div>
 
               <div className="rounded-lg bg-accent/30 p-4 space-y-2">
                 <p className="text-sm">
-                  <strong>Data:</strong> {date?.toLocaleDateString("ro-RO")}
+                  <strong>{t.booking.bookingModal.date}</strong>{" "}
+                  {date?.toLocaleDateString("ro-RO")}
                 </p>
                 <p className="text-sm">
-                  <strong>Ora:</strong> {selectedTime}
+                  <strong>{t.booking.bookingModal.time}</strong> {selectedTime}
                 </p>
               </div>
 
               <div className="rounded-lg bg-primary/5 border border-primary/20 p-5">
                 <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
                   <Info className="h-5 w-5 text-primary" />
-                  Îți doresc să te cunosc mai bine
+                  {t.booking.bookingModal.knowYouBetter}
                 </h4>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Pentru a putea să îți ofer cea mai bună experiență
-                  terapeutică, te invit să completezi un scurt chestionar. Acest
-                  pas este complet opțional, dar mă va ajuta să te înțeleg mai
-                  bine înainte de prima noastră întâlnire.
+                  {t.booking.bookingModal.questionnaireDesc}
                 </p>
                 <div className="flex gap-3">
                   <Button
@@ -342,14 +355,14 @@ const Booking = () => {
                     }}
                     className="flex-1"
                   >
-                    Da, completez chestionarul
+                    {t.booking.bookingModal.completeQuestionnaire}
                   </Button>
                   <Button
                     onClick={handleCloseBooking}
                     variant="outline"
                     className="flex-1"
                   >
-                    Poate mai târziu
+                    {t.booking.bookingModal.maybeLater}
                   </Button>
                 </div>
               </div>

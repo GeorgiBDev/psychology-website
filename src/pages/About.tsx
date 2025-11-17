@@ -1,22 +1,25 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { useLanguage } from "@/hooks/useLanguage";
 import { GraduationCap, Award, Heart } from "lucide-react";
 
 const About = () => {
+  const { t } = useLanguage();
+
   const credentials = [
     {
       icon: GraduationCap,
-      title: "Ph.D. în Psihologie Clinică",
-      description: "Universitatea Babes-Bolyai, 2025",
+      title: t.about.credentials.phd.title,
+      description: t.about.credentials.phd.desc,
     },
     {
       icon: Award,
-      title: "Psiholog Clinician Licențiat",
-      description: "Colegiul Psihologilor din România",
+      title: t.about.credentials.licensed.title,
+      description: t.about.credentials.licensed.desc,
     },
     {
       icon: Heart,
-      title: "Terapeut Certificat în Mindfulness",
-      description: "Centrul pentru Studii de Mindfulness",
+      title: t.about.credentials.certified.title,
+      description: t.about.credentials.certified.desc,
     },
   ];
 
@@ -26,27 +29,12 @@ const About = () => {
         <div className="mb-20 grid items-center gap-16 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
             <h1 className="mb-6 font-heading text-4xl font-bold text-foreground lg:text-5xl">
-              Despre Georgiana Balea
+              {t.about.title}
             </h1>
             <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-              <p>
-                Cu peste 15 ani de experiență în psihologie clinică, sunt
-                dedicată să ofer îngrijire empatică și bazată pe dovezi pentru
-                sănătatea mentală, într-un mediu liniștit și primitor.
-              </p>
-              <p>
-                Abordarea mea combină metodele terapeutice tradiționale cu
-                practicile de mindfulness și tehnicile de vindecare inspirate de
-                natură. Cred că adevărata bunăstare vine din înțelegerea
-                interconexiunii dintre bunăstarea noastră mentală, emotională și
-                fizică.
-              </p>
-              <p>
-                Mă specializez în tulburări de anxietate, depresie, recuperarea
-                după traume și tranziții de viață, ajutând indivizii să își
-                găsească calea către echilibrul emoțional și creșterea
-                personală.
-              </p>
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
+              <p>{t.about.p3}</p>
             </div>
           </div>
           <div className="order-1 lg:order-2">
@@ -88,7 +76,7 @@ const About = () => {
 
         <div className="mb-20">
           <h2 className="mb-12 text-center font-heading text-3xl font-semibold text-foreground lg:text-4xl">
-            Acreditări & Educație
+            {t.about.credentials.title}
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             {credentials.map((item, index) => (
@@ -112,19 +100,17 @@ const About = () => {
 
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-8 font-heading text-3xl font-semibold text-foreground lg:text-4xl">
-            Filosofia Mea Terapeutică
+            {t.about.philosophy.title}
           </h2>
           <Card className="gradient-card border-0 shadow-large">
             <CardContent className="p-12">
               <blockquote className="font-heading text-xl italic leading-relaxed text-foreground lg:text-2xl">
-                "Vindecarea are loc în relație și în conexiune cu natura. Cred
-                că fiecare persoană are o capacitate înnăscută de creștere și
-                reziliență. Rolul meu este să ofer un spațiu sigur și îngrijitor
-                unde poți să te reconectezi cu înțelepciunea ta interioară și să
-                îți găsești calea înainte."
+                "{t.about.philosophy.quote}"
               </blockquote>
               <div className="mt-8 font-medium text-primary">
-                — Georgiana Balea
+                <div className="mt-8 font-medium text-primary">
+                  {t.about.philosophy.author}
+                </div>
               </div>
             </CardContent>
           </Card>
