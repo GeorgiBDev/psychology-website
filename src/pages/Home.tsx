@@ -7,7 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Heart, Lightbulb, Sun, ArrowRight } from "lucide-react";
+import {
+  Heart,
+  Lightbulb,
+  Sun,
+  ArrowRight,
+  Linkedin,
+  Instagram,
+} from "lucide-react";
 import heroImage from "@/assets/hero-therapy-office.jpg";
 import { useLanguage } from "@/hooks/useLanguage";
 
@@ -31,6 +38,11 @@ const Home = () => {
       description: t.home.features.holistic.desc,
     },
   ];
+
+  const socialLinks = {
+    linkedin: "https://www.linkedin.com/in/georgiana-balea-533b34192/",
+    instagram: "https://www.instagram.com/psihoterapeut_in_formare/",
+  };
 
   return (
     <div className="min-h-screen">
@@ -117,14 +129,49 @@ const Home = () => {
           <p className="mx-auto mb-8 max-w-2xl text-lg opacity-90">
             {t.home.cta.subtitle}
           </p>
-          <Button
-            asChild
-            size="lg"
-            variant="secondary"
-            className="rounded-full"
-          >
-            <Link to="/booking">{t.home.cta.btn}</Link>
-          </Button>
+          <div className="flex flex-col items-center gap-6">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="rounded-full"
+            >
+              <Link to="/booking">{t.home.cta.btn}</Link>
+            </Button>
+
+            <div className="flex gap-4">
+              <Button
+                asChild
+                variant="secondary"
+                size="icon"
+                className="h-10 w-10 rounded-full"
+              >
+                <a
+                  href={socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button
+                asChild
+                variant="secondary"
+                size="icon"
+                className="h-10 w-10 rounded-full"
+              >
+                <a
+                  href={socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -12,6 +12,7 @@ import Booking from "./pages/Booking";
 import NotFound from "./pages/NotFound";
 // import { ChatAssistant } from "./components/ChatAgent";
 import { LanguageProvider } from "./context/LanguageContext";
+import Contact from "./components/Contact";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/booking" element={<Booking />} />
                 <Route path="*" element={<NotFound />} />

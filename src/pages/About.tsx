@@ -1,6 +1,16 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
-import { GraduationCap, Award, Heart } from "lucide-react";
+import {
+  GraduationCap,
+  Award,
+  Heart,
+  FileText,
+  Video,
+  Linkedin,
+  Instagram,
+} from "lucide-react";
 
 const About = () => {
   const { t } = useLanguage();
@@ -22,6 +32,15 @@ const About = () => {
       description: t.about.credentials.certified.desc,
     },
   ];
+
+  const socialLinks = {
+    linkedin: "https://www.linkedin.com/in/georgiana-balea-533b34192/",
+    instagram: "https://www.instagram.com/psihoterapeut_in_formare/",
+  };
+  const cvLinks = {
+    cv: "/psychology-website/GeorgianaBalea.pdf",
+    videoCv: "https://youtu.be/52yIMt10xa4",
+  };
 
   return (
     <div className="min-h-screen py-20 lg:py-32">
@@ -98,6 +117,62 @@ const About = () => {
           </div>
         </div>
 
+        <div className="mb-20">
+          <h2 className="mb-12 text-center font-heading text-3xl font-semibold text-foreground lg:text-4xl">
+            {t.about.resources.title}{" "}
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 max-w-2xl mx-auto">
+            <Card className="gradient-card border-0 shadow-medium hover:shadow-large transition-shadow duration-300">
+              <CardContent className="pt-6 flex items-start gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
+                  <FileText className="h-7 w-7 text-primary" />
+                </div>
+                <div>
+                  <h3 className="mb-1 font-heading text-lg font-semibold text-foreground">
+                    {t.about.resources.cv.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {t.about.resources.cv.desc}
+                  </p>
+                  <Button asChild variant="ghost" size="sm">
+                    <a
+                      href={cvLinks.cv}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View CV
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="gradient-card border-0 shadow-medium hover:shadow-large transition-shadow duration-300">
+              <CardContent className="pt-6 flex items-start gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
+                  <Video className="h-7 w-7 text-primary" />
+                </div>
+                <div>
+                  <h3 className="mb-1 font-heading text-lg font-semibold text-foreground">
+                    {t.about.resources.videoCv.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {t.about.resources.videoCv.desc}
+                  </p>
+                  <Button asChild variant="ghost" size="sm">
+                    <a
+                      href={cvLinks.videoCv}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Watch Video
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="mb-8 font-heading text-3xl font-semibold text-foreground lg:text-4xl">
             {t.about.philosophy.title}
@@ -108,12 +183,48 @@ const About = () => {
                 "{t.about.philosophy.quote}"
               </blockquote>
               <div className="mt-8 font-medium text-primary">
-                <div className="mt-8 font-medium text-primary">
-                  {t.about.philosophy.author}
-                </div>
+                {t.about.philosophy.author}
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        <div className="mt-20 text-center">
+          <h3 className="mb-4 font-heading text-2xl font-semibold text-foreground">
+            {t.about.connectTitle}
+          </h3>
+          <div className="flex justify-center gap-4">
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              className="h-12 w-12 rounded-full bg-primary/10"
+            >
+              <a
+                href={socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-6 w-6 text-primary" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="icon"
+              className="h-12 w-12 rounded-full bg-primary/10"
+            >
+              <a
+                href={socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-6 w-6 text-primary" />
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

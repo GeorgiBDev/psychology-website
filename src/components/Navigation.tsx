@@ -73,10 +73,10 @@ const Navigation = () => {
             </DropdownMenu>
 
             <Button asChild className="rounded-full">
-              <a href="tel:0744000277">
+              <Link to="/contact">
                 <Phone className="mr-2 h-4 w-4" />
                 {t.nav.contact}
-              </a>
+              </Link>
             </Button>
           </div>
 

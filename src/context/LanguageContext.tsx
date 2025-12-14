@@ -60,6 +60,18 @@ interface Translations {
         desc: string;
       };
     };
+    resources: {
+      title: string;
+      cv: {
+        title: string;
+        desc: string;
+      };
+      videoCv: {
+        title: string;
+        desc: string;
+      };
+    };
+    connectTitle: string;
     philosophy: {
       title: string;
       quote: string;
@@ -117,6 +129,21 @@ interface Translations {
       };
     };
     cta: string;
+  };
+  contact: {
+    title: string;
+    subtitle: string;
+    infoTitle: string;
+    connectTitle: string;
+    email: string;
+    phone: string;
+    address: string;
+    formTitle: string;
+    formName: string;
+    formEmail: string;
+    formSubject: string;
+    formMessage: string;
+    formSubmit: string;
   };
   booking: {
     title: string;
@@ -232,15 +259,15 @@ const translations: Record<Language, Translations> = {
       },
     },
     about: {
-      title: "Despre Georgiana Balea",
-      p1: "Cu peste 15 ani de experiență în psihologie clinică, sunt dedicată să ofer îngrijire empatică și bazată pe dovezi pentru sănătatea mentală, într-un mediu liniștit și primitor.",
+      title: "Despre mine,",
+      p1: "Cu peste 10 ani de experiență în psihologie clinică, sunt dedicată să ofer servicii de înaltă calitate bazate pe empatie și pe dovezi științifice pentru sănătatea mentală, într-un mediu liniștit și primitor.",
       p2: "Abordarea mea combină metodele terapeutice tradiționale cu practicile de mindfulness și tehnicile de vindecare inspirate de natură. Cred că adevărata bunăstare vine din înțelegerea interconexiunii dintre bunăstarea noastră mentală, emotională și fizică.",
       p3: "Mă specializez în tulburări de anxietate, depresie, recuperarea după traume și tranziții de viață, ajutând indivizii să își găsească calea către echilibrul emoțional și creșterea personală.",
       credentials: {
         title: "Acreditări & Educație",
         phd: {
           title: "Ph.D. în Psihologie Clinică",
-          desc: "Universitatea București, 2010",
+          desc: "Universitatea Babeș-Bolyai, 2028",
         },
         licensed: {
           title: "Psiholog Clinician Licențiat",
@@ -251,10 +278,22 @@ const translations: Record<Language, Translations> = {
           desc: "Centrul pentru Studii de Mindfulness",
         },
       },
+      resources: {
+        title: "Resurse & Prezentare",
+        cv: {
+          title: "Curriculum Vitae (CV)",
+          desc: "Vizualizează experiența profesională, educația și publicațiile mele.",
+        },
+        videoCv: {
+          title: "Video CV",
+          desc: "O scurtă prezentare video despre mine și abordarea mea terapeutică.",
+        },
+      },
+      connectTitle: "Haide să povestim",
       philosophy: {
         title: "Filosofia Mea Terapeutică",
         quote:
-          "Vindecarea are loc în relație și în conexiune cu natura. Cred că fiecare persoană are o capacitate înnăscută de creștere și reziliență. Rolul meu este să ofer un spațiu sigur și îngrijitor unde poți să te reconectezi cu înțelepciunea ta interioară și să îți găsești calea înainte.",
+          "Vindecarea are loc între relații și conexiune. Cred că fiecare persoană are o capacitate înnăscută de creștere și reziliență. Rolul meu este să ofer un spațiu sigur și îngrijitor unde poți să te reconectezi cu interiorul și să îți găsești calea înainte.",
         author: "— Georgiana Balea",
       },
     },
@@ -310,6 +349,22 @@ const translations: Record<Language, Translations> = {
         },
       },
       cta: "Programează o Consultație",
+    },
+    contact: {
+      title: "Contactează-mă",
+      subtitle:
+        "Pentru întrebări, programări sau a începe călătoria ta, completează formularul de mai jos.",
+      infoTitle: "Informații de Contact",
+      connectTitle: "Urmărește-mă pe Rețelele Sociale",
+      email: "Email",
+      phone: "Telefon",
+      address: "Adresă",
+      formTitle: "Trimite un Mesaj",
+      formName: "Nume Complet",
+      formEmail: "Email",
+      formSubject: "Subiect (Opțional)",
+      formMessage: "Mesajul tău...",
+      formSubmit: "Trimite Mesajul",
     },
     booking: {
       title: "Programează Sesiunea Ta",
@@ -446,10 +501,22 @@ const translations: Record<Language, Translations> = {
           desc: "Center for Mindfulness Studies",
         },
       },
+      resources: {
+        title: "Resources & Introduction",
+        cv: {
+          title: "Curriculum Vitae (CV)",
+          desc: "View my professional experience, education, and publications.",
+        },
+        videoCv: {
+          title: "Video CV",
+          desc: "A short video introduction about me and my therapeutic approach.",
+        },
+      },
+      connectTitle: "Let's Connect",
       philosophy: {
         title: "My Therapeutic Philosophy",
         quote:
-          "Healing happens in relationship and in connection with nature. I believe every person has an innate capacity for growth and resilience. My role is to provide a safe and nurturing space where you can reconnect with your inner wisdom and find your path forward.",
+          "Healing happens between relationships and connections. I believe every person has an innate capacity for growth and resilience. My role is to provide a safe and nurturing space where you can reconnect with your inner self and find your path forward.",
         author: "— Georgiana Balea",
       },
     },
@@ -505,6 +572,22 @@ const translations: Record<Language, Translations> = {
         },
       },
       cta: "Book a Consultation",
+    },
+    contact: {
+      title: "Get In Touch",
+      subtitle:
+        "For inquiries, scheduling, or to begin your journey, please complete the form below.",
+      infoTitle: "Contact Information",
+      connectTitle: "Let's Connect on Social Media",
+      email: "Email",
+      phone: "Phone",
+      address: "Address",
+      formTitle: "Send a Message",
+      formName: "Full Name",
+      formEmail: "Email",
+      formSubject: "Subject (Optional)",
+      formMessage: "Your message...",
+      formSubmit: "Send Message",
     },
     booking: {
       title: "Book Your Session",

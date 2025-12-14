@@ -27,24 +27,24 @@ const Footer = () => {
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
                 <a
-                  href="tel:0744000277"
+                  href="tel:+1234567890"
                   className="hover:text-primary transition-colors"
                 >
-                  0744 000 277
+                  +1234567890
                 </a>
               </div>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
                 <a
-                  href="mailto:contact@georgianabalea.ro"
+                  href="mailto:georgianabaleapsihoterapeut@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
-                  contact@georgianabalea.ro
+                  georgianabaleapsihoterapeut@gmail.com
                 </a>
               </div>
               <div className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-1" />
-                <span>București, România</span>
+                <span>Cluj-Napoca, Romania</span>
               </div>
             </div>
           </div>
